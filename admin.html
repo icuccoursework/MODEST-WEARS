@@ -1,0 +1,23 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"><title>Admin — MODESTY WEARS</title>
+<style>body{font-family:Inter,Arial;padding:18px} input, textarea {padding:8px;border-radius:6px;border:1px solid #ddd;margin-bottom:8px;display:block;width:100%} button{padding:8px 12px;border-radius:8px;border:0;background:#cfe9b4;color:#111;cursor:pointer}</style>
+</head><body>
+<h1>Admin Panel — MODESTY WEARS</h1>
+<p>Add product entries. Upload images to <code>assets/images/</code> with the exact filename.</p>
+<form id="add-form" onsubmit="event.preventDefault();saveProduct()">
+<input id="p-name" placeholder="Name" required>
+<input id="p-price" placeholder="Price (UGX)" required type="number">
+<input id="p-category" placeholder="Category" required>
+<input id="p-img" placeholder="Image path (assets/images/modest_product1.svg)" required>
+<textarea id="p-desc" placeholder="Description"></textarea>
+<button type="submit">Add / Update Product</button>
+</form>
+<h2>Current products</h2><div id="list"></div>
+<script>
+function loadProducts(){ const raw = localStorage.getItem('NC_PRODUCTS'); try{return raw? JSON.parse(raw) : []; }catch(e){return []; } }
+function saveProducts(arr){ localStorage.setItem('NC_PRODUCTS', JSON.stringify(arr)); }
+function renderList(){ const list=document.getElementById('list'); const products=loadProducts(); if(!products.length){ list.innerHTML='<em>No products added yet. Use the form above.</em>'; return; } list.innerHTML=''; products.forEach(p=>{ const el=document.createElement('div'); el.style.display='flex'; el.style.justifyContent='space-between'; el.style.padding='8px 0'; el.innerHTML = `<div><strong>${p.name}</strong> — ${p.category} — UGX ${p.price}</div><div><button onclick='edit(${p.id})'>Edit</button> <button onclick='remove(${p.id})'>Delete</button></div>`; list.appendChild(el); }); }
+function saveProduct(){ const p = { id: Date.now(), name: document.getElementById('p-name').value.trim(), price: parseInt(document.getElementById('p-price').value,10), category: document.getElementById('p-category').value.trim(), img: document.getElementById('p-img').value.trim(), desc: document.getElementById('p-desc').value.trim() }; if(!p.name) return alert('Name required'); const arr = loadProducts(); const found = arr.find(x=>x.name === p.name); if(found){ found.price = p.price; found.category = p.category; found.img = p.img; found.desc = p.desc; } else { arr.push(p); } saveProducts(arr); renderList(); alert('Saved'); document.getElementById('add-form').reset(); }
+function edit(id){ const arr = loadProducts(); const p = arr.find(x=>x.id===id); if(!p) return; document.getElementById('p-name').value = p.name; document.getElementById('p-price').value = p.price; document.getElementById('p-category').value = p.category; document.getElementById('p-img').value = p.img; document.getElementById('p-desc').value = p.desc; const newArr = arr.filter(x=>x.id!==id); saveProducts(newArr); renderList(); }
+function remove(id){ const arr = loadProducts().filter(x=>x.id!==id); saveProducts(arr); renderList(); }
+renderList();
+</script></body></html>

@@ -1,0 +1,176 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>MODESTY WEARS — Home</title>
+    <meta name="description" content="MODESTY WEARS — Islamic wears for ladies and gentlemen. Affordable & delivered nationwide." />
+    <style>
+        :root {
+            --pink:#ffbfd3;
+            --lemon:#cfe9b4;
+            --dark:#1a1a1a;
+            --muted:#666;
+        }
+
+        body {
+            font-family: Inter, Arial, sans-serif;
+            margin: 0;
+            background: #ffffff;
+            color: var(--dark);
+        }
+
+        .wrap {
+            max-width: 1100px;
+            margin: 24px auto;
+            padding: 18px;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        nav a {
+            margin-left: 12px;
+            color: var(--dark);
+            text-decoration: none;
+        }
+
+        .hero {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+            margin-top: 18px;
+        }
+
+            .hero img {
+                width: 48%;
+                border-radius: 10px;
+            }
+
+        .cta {
+            margin-top: 12px;
+            display: flex;
+            gap: 10px;
+        }
+
+        footer {
+            margin-top: 28px;
+            padding: 18px;
+            border-radius: 8px;
+            background: #0f1720;
+            color: #fff;
+        }
+
+        @media(max-width:800px) {
+            .hero {
+                flex-direction: column;
+            }
+
+                .hero img {
+                    width: 100%;
+                }
+        }
+        main {
+            padding: 40px 20px;
+            max-width: 700px;
+            margin: auto;
+        }
+
+            main h2 {
+                color: var(--green);
+                text-align: center;
+                margin-bottom: 30px;
+            }
+
+        form {
+            background-color: var(--white);
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+        }
+
+            form label {
+                display: block;
+                margin-bottom: 5px;
+                font-weight: bold;
+            }
+
+            form input,
+            form textarea {
+                width: 100%;
+                padding: 10px;
+                margin-bottom: 20px;
+                border: 1px solid #ccc;
+                border-radius: 5px;
+                font-size: 1em;
+            }
+
+            form button {
+                background-color: var(--green);
+                color: var(--white);
+                border: none;
+                padding: 12px 20px;
+                font-size: 1em;
+                border-radius: 5px;
+                cursor: pointer;
+                transition: background-color 0.3s;
+            }
+
+                form button:hover {
+                    background-color: var(--orange);
+                }
+
+    </style>
+</head>
+<body>
+    <div class="wrap">
+        <header>
+            <div class="logo"><img src="assets/images/logo.jpg" alt="MODESTY WEARS" width="140"><h1>MODESTY WEARS</h1></div>
+            <nav>
+                <a href="shop.html">Shop</a>
+                <a href="admin.html">Admin</a>
+                <a href="contact">Contact</a>
+            </nav>
+        </header>
+        <main>
+            <h2>Contact Us</h2>
+            <form id="contactForm">
+                <label for="name">Full Name</label>
+                <input type="text" id="name" placeholder="Your full name" required>
+                <label for="email">Email</label>
+                <input type="email" id="email" placeholder="Your email" required>
+                <label for="message">Message</label>
+                <textarea id="message" rows="5" placeholder="Type your message here" required></textarea>
+                <button type="submit">Send Message</button>
+            </form>
+        </main>
+        <script>
+            document.getElementById('contactForm').addEventListener('submit', function(e) {
+                e.preventDefault();
+                var name = encodeURIComponent(document.getElementById('name').value);
+                var email = encodeURIComponent(document.getElementById('email').value);
+                var message = encodeURIComponent(document.getElementById('message').value);
+                var whatsappNumber = "755965926"; // School WhatsApp number
+                var whatsappURL = `https://wa.me/${whatsappNumber}?text=Name: ${name}%0AEmail: ${email}%0AMessage: ${message}`;
+                window.open(whatsappURL, '_blank');
+            });
+        </script>
+        <footer>
+            <div style="display:flex;justify-content:space-between;align-items:center">
+                <div style="color:#fff">© 2025 MODESTY WEARS</div>
+                <div style="color:#fff">Empowering Modesty · Supporting Decency</div>
+            </div>
+        </footer>
+    </div>
+</body>
+</html>
+

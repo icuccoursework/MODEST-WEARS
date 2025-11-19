@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="200" viewBox="0 0 600 200">
+  <rect width="100%" height="100%" fill="white"/>
+  <!-- crescent + hijab icon in lemon green and pink -->
+  <g transform="translate(40,20)">
+    <path d="M80 20 A60 60 0 1 0 80 140 A48 48 0 1 1 80 20 Z" fill="#cfe9b4"/>
+    <path d="M80 36 C120 36,120 116,80 116 C60 116,50 96,46 80 C60 62,60 36,80 36 Z" fill="#ffbfd3" opacity="0.95"/>
+  </g>
+  <text x="180" y="110" font-family="Georgia, serif" font-size="48" fill="#1a1a1a">MODESTY WEARS</text>
+  <text x="180" y="145" font-family="Arial, sans-serif" font-size="14" fill="#666">Empowering Modesty · Supporting Decency</text>
+</svg>
